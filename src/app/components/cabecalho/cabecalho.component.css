@@ -1,0 +1,43 @@
+ul, li
+{
+    display: inline-flex;
+}
+li
+{
+    border: solid 1px black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 10px; 
+    color: white;
+    cursor: default;
+}
+.active-aba
+{
+    background-color: RGB(240, 240, 240);
+    border: solid 1px RGB(240, 240, 240);
+}
+.active-route a
+{
+    color: black;
+}
+#area-menu-aba
+{
+    width: 100%;
+    height: 40px;
+    background-color: var(--menu);
+}
+#area-menu-aba ul
+{
+    height: 100%;
+}
+#area-menu-aba ul li
+{
+    font-size: 13px;
+}
+#area-menu-aba ul li button
+{
+    background: none;
+    margin-left: 5px;
+    color: white;
+    
+}

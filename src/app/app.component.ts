@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Caixas';
+  modal: boolean =  false;
+
+  ngOnInit()
+  {  
+  }
+  teste(evento:any)
+  {
+    this.modal = evento
+  }
 }

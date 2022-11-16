@@ -1,0 +1,63 @@
+<div class="modal-area" *ngIf="statusmodal">
+    <form  [formGroup]="formulario"(ngSubmit)="onSubmit()">
+        <div id="content-forms">
+            <div>
+                <label for="cod">Código</label>
+                <input type="text" id="cod" formControlName="codigo" [ngClass]="aplicaCssInvalido('codigo')">
+            </div>
+            <div>
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" formControlName="nome" [ngClass]="aplicaCssInvalido('nome')">
+            </div>
+            <div id="ativoCss" class="form-group">
+                <input type="checkbox" name="ativo" id="ativo" formControlName="ativo">
+                <label for="ativo">Ativo</label>
+            </div>
+            <div>
+                <div class="add-usuarios">
+                    <select id="usuarios" formControlName="usuarios">
+                        <option *ngFor="let itemUsuario of usuario" [ngValue]="itemUsuario.nome">{{ itemUsuario.nome }}</option>
+                    </select>
+                    <button type="button" class="btn-salvar"(click)="setUsuario()">Adicionar</button>        
+                </div>
+                 <br> <!--REMOVER QUEBRA E ADICIONAR MARGEM -->
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Excluir</th>
+                                <th scope="col" class="text-left width-90">Nome</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let itemUsuario of usuarioselect let i = index">
+                                <td style="text-align: center;"><button (click)="removerUsario(i)" type="button" class="fa-regular fa-trash-can"></button></td>
+                                <td>{{ itemUsuario}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+        <div id="footer-forms">
+            <button type="submit" class="btn-salvar">Gravar</button>
+            <button type="button" class="btn-cancelar" (click)="modal()">Fechar</button>
+        </div>
+    </form>
+</div>
+
+<!-- <br>
+<div>
+    <div>
+        Detalhes do Form
+    </div>
+    <pre>
+         Form Válido: {{ formulario.valid }}
+    </pre>
+    <pre>
+        Form enviado: {{ formulario.submitted }}
+   </pre>
+   <pre>
+        Valores: <br> {{ formulario.value | json }}
+    </pre>
+</div> -->
+
+
