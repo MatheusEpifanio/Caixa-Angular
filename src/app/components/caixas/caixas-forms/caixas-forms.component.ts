@@ -51,14 +51,13 @@ export class CaixasFormsComponent implements OnInit {
               ativo: item['ativo']
             }
           );  
-        
             let itemsusarios = JSON.stringify(item.usuarios)
             let users = itemsusarios.split(',')
             users.map(u => {
               u = u.replace(/\W/g, "")
               this.usuarioselect.push(u)
-              console.log(this.usuarioselect)
             })
+            this.alterar = !this.alterar
         }                      
       });
   }

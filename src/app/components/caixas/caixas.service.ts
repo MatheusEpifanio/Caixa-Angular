@@ -107,7 +107,7 @@ export class CaixasService {
   }
 
   alterarCaixa(item, id:number, users = [])
-  { 
+  {     
     this.caixas[id] = item;    
     this.caixas[id].usuarios =  users
     this.setLocalCaixa(this.caixas);
