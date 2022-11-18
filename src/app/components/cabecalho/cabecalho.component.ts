@@ -23,7 +23,7 @@ export class CabecalhoComponent implements OnInit {
     
     this.caixasService.alteraritem.subscribe(id => {     
       this.nomecaixa = (this.caixasService.itemCaixa(id).nome)
-      console.log('123');
+      // console.log('123');
       
     });    
   }
@@ -34,8 +34,7 @@ export class CabecalhoComponent implements OnInit {
 
   pegaNome(nome)
   {
-    console.log('214');
-     
+    // console.log('214');
     this.nomecaixa = nome
 
   }
