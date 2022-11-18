@@ -14,7 +14,7 @@
     background-color: white;
     border: solid RGB(222, 222, 222) 1px;
     border-radius: 3px;
-    min-width: 1164px;
+    /* min-width: 1164px; */
 }
 
 #buttons-functions

@@ -1,4 +1,6 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { CaixasFormsComponent } from './caixas-forms/caixas-forms.component';
 
 import { CaixasService } from './caixas.service';
 
@@ -9,17 +11,17 @@ import { CaixasService } from './caixas.service';
 })
 export class CaixasComponent implements OnInit {
 
-  caixas:[] = [];
+  caixas:any[] = [];
   usuarioscaixa:any[] = [];
-  itemsativos:any[] = [];
+  status:boolean = true
 
   constructor(private caixasService:CaixasService
              ) { }
 
   ngOnInit(): void
   { 
-    this.caixas = this.caixasService.atualizarCaixa()
-    // this.usuarioscaixa = this.caixas.map((caixas)=> caixas.usuarios);
+    this.caixas = this.caixasService.atualizarCaixa()     
+    // this.smtAtivos()
   }
   
   excluirItem(id: number)
@@ -43,12 +45,23 @@ export class CaixasComponent implements OnInit {
 
   exibir()
   {
-    this.caixasService.atualizarCaixa()
+    this.caixas = this.caixasService.atualizarCaixa()
   }
 
-  smtAtivos()
-  {
-  
+  smtAtivos(event = null)
+  {            
+    // if(event != null)
+    // {
+    //   this.status = !this.status 
+    // }
+    // if(this.status)
+    // {
+    //   this.caixas = this.caixasService.somenteAtivo()       
+    // }
+    // else
+    // {
+    //   this.caixas = this.caixasService.getLocalCaixa()
+    // }    
   }
 
 

@@ -14,7 +14,7 @@ export class CaixasFormsComponent implements OnInit {
   
   formulario: FormGroup;
   usuario;
-  usuarioselect:string[] = [];
+  usuarioselect:string[];
   
   
   isEnviado: boolean = false;
@@ -35,31 +35,7 @@ export class CaixasFormsComponent implements OnInit {
       usuarios:[null],
       ativo: [true]
     })
-    this.caixasService.alteraritem.subscribe(c => 
-      {
-        if(c != null)
-        {       
-          this.modal()
-          console.log('alterar');
-          let item = this.caixasService.itemCaixa(c)
-          this.idAlterar = c
-          this.formulario.patchValue
-          (
-            {
-              codigo: item['codigo'],
-              nome: item['nome'],
-              ativo: item['ativo']
-            }
-          );  
-            let itemsusarios = JSON.stringify(item.usuarios)
-            let users = itemsusarios.split(',')
-            users.map(u => {
-              u = u.replace(/\W/g, "")
-              this.usuarioselect.push(u)
-            })
-            this.alterar = !this.alterar
-        }                      
-      });
+    this.populadados()
   }
 
   ngOnDestroy()
@@ -80,16 +56,45 @@ export class CaixasFormsComponent implements OnInit {
           this.formulario.get(campo).reset()
         }
       })
+      if(this.alterar)
+      {
+        this.alterar = !this.alterar
+      }
+  }
+
+  populadados()
+  {
+    this.caixasService.alteraritem.subscribe(c => 
+      {
+        this.modal()
+        this.alterar = !this.alterar 
+        let item = this.caixasService.itemCaixa(c)
+        this.idAlterar = c
+        this.formulario.patchValue
+        (
+          {
+            codigo: item['codigo'],
+            nome: item['nome'],
+            ativo: item['ativo']
+          }
+        );  
+        let itemsusarios = JSON.stringify(item.usuarios);
+        let users = itemsusarios.split(',');
+        users.map(u => {
+          if(u != '[]'){              
+          u = u.replace(/\W/g, '');
+          this.usuarioselect.push(u);
+          }
+        })         
+      });
   }
 
   setUsuario()
   {
-    let formsusers = this.formulario.get('usuarios').value;
+    let formsusers = this.formulario.get('usuarios').value;  
     if(formsusers != null && this.usuarioselect.indexOf(formsusers) == -1)
     {
-      let itemUsuario = this.formulario.get('usuarios').value
-      this.usuarioselect.push(itemUsuario)
-      console.log(this.usuarioselect);          
+      this.usuarioselect.push(formsusers)     
     }
   }
 
@@ -107,7 +112,6 @@ export class CaixasFormsComponent implements OnInit {
       {
         this.caixasService.alterarCaixa(this.formulario.value, this.idAlterar, this.usuarioselect);
         this.isEnviado = false; 
-        this.alterar = !this.alterar;
         this.modal();
       }
       else
@@ -136,4 +140,7 @@ export class CaixasFormsComponent implements OnInit {
       return 'invalido';
     }
   }
+
+
+  
 }

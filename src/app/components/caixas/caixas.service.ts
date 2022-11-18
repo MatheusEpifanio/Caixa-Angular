@@ -16,6 +16,30 @@ export class CaixasService {
     {
       id:1,
       nome: 'Maria'
+    },
+    {
+      id:2,
+      nome: 'Joao'
+    },
+    {
+      id:3,
+      nome: 'Fulano'
+    },
+    {
+      id:4,
+      nome: 'adm'
+    },
+    {
+      id:5,
+      nome: 'Usuario'
+    },
+    {
+      id:6,
+      nome: 'Teste Usuario32'
+    },
+    {
+      id:7,
+      nome: 'Epifanio'
     }
   ]
   caixas: Caixas[];
@@ -35,8 +59,8 @@ export class CaixasService {
   }
 
   setCaixa(caixa:Caixas, users = [])
-  {     
-    caixa.usuarios = users    
+  {      
+    caixa.usuarios = users        
     this.caixas.push(caixa);    
     this.setLocalCaixa(this.caixas);
   }
@@ -114,7 +138,7 @@ export class CaixasService {
   }
 
   emitirAlterarCaixa(id)
-  {
+  {    
    this.alteraritem.emit(id);
   }
 

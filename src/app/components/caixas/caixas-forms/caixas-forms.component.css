@@ -73,6 +73,11 @@ input[type='text']
     padding: 5px;
 }
 
+#usuarios-area
+{
+    height: 59%;
+}
+
 .add-usuarios button
 {
     width: 9%;
@@ -100,6 +105,14 @@ input[type='text']:focus
     padding: 5px;
 }
 
+#table-borda
+{
+    margin-top: 18px;
+    height: 100%;
+    border: solid 1px rgb(222, 222, 222);
+    overflow-x: hidden;
+}
+
 table
 {
     width: 100%;
@@ -107,6 +120,7 @@ table
     font-size: 12px;
     border-collapse: collapse;
     cursor: pointer;
+    overflow-x: hidden;
 }
 
 th

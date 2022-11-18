@@ -10,7 +10,7 @@
             <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <div id="smt-ativos">
-            <input type="checkbox" checked id="somente-ativo" (click)="smtAtivos()">
+            <input type="checkbox" checked id="somente-ativo" #somenteativo (click)="smtAtivos($event)">
             <label for="somente-ativo">Somente ativos</label> 
         </div>
     </div> 

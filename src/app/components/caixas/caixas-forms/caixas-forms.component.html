@@ -13,14 +13,15 @@
                 <input type="checkbox" name="ativo" id="ativo" formControlName="ativo">
                 <label for="ativo">Ativo</label>
             </div>
-            <div>
+            <div id="usuarios-area">
+                <label for="usuarios">Usuários</label>
                 <div class="add-usuarios">
                     <select id="usuarios" formControlName="usuarios">
-                        <option *ngFor="let itemUsuario of usuario" [ngValue]="itemUsuario.nome">{{ itemUsuario.nome }}</option>
+                    <option *ngFor="let itemUsuario of usuario" [ngValue]="itemUsuario.nome">{{ itemUsuario.nome }}</option>
                     </select>
                     <button type="button" class="btn-salvar"(click)="setUsuario()">Adicionar</button>        
                 </div>
-                 <br> <!--REMOVER QUEBRA E ADICIONAR MARGEM -->
+                 <div id="table-borda">
                     <table>
                         <thead>
                             <tr>
@@ -35,6 +36,7 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
             </div>
         </div>
         <div id="footer-forms">

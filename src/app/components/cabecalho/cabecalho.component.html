@@ -5,7 +5,7 @@
                 Caixas
             </li>
             <li *ngIf="statusmodal">
-                {{ nomecaixa }} <button class="fa-solid fa-x fa-2xs"></button>
+                {{ nomecaixa |uppercase }} <button class="fa-solid fa-x fa-2xs"(click)="modalFechar()"></button>
             </li>
             
         </ul>
