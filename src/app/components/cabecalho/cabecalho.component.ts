@@ -1,4 +1,5 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { CaixasService } from '../caixas/caixas.service';
 
 @Component({
@@ -8,34 +9,30 @@ import { CaixasService } from '../caixas/caixas.service';
 })
 export class CabecalhoComponent implements OnInit {
 
-  statusmodal;
-  nomecaixa;
-
-
+  statusmodal:boolean = false;
+  nomecaixa = 'Novo Caixa';
   constructor(private caixasService: CaixasService) { }
 
   ngOnInit(): void 
   {
     this.caixasService.statusmodal.subscribe(statusmodal => {
-      this.pegaStatus(statusmodal)
-      this.pegaNome('Novo Caixa')
+      this.statusmodal = statusmodal
+      if(!statusmodal)
+      {
+        this.nomecaixa = 'Novo Caixa'
+      }
     }); 
-    
-    this.caixasService.alteraritem.subscribe(id => {     
-      this.nomecaixa = (this.caixasService.itemCaixa(id).nome)
-      // console.log('123');
-      
-    });    
+    this.caixasService.alteraritem.subscribe(id => {   
+       this.nomecaixa =  this.caixasService.itemCaixa(id).nome.toUpperCase()
+    })   
   }
-  pegaStatus(status)
+  modalFechar()
   {
-    this.statusmodal = status
-  } 
-
-  pegaNome(nome)
-  {
-    // console.log('214');
-    this.nomecaixa = nome
-
+    this.caixasService.emitirStatusModal(false)   
   }
+  teste(aba)
+  {
+    this.caixasService.statusaba(aba)
+  }
+
 }

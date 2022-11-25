@@ -2,7 +2,7 @@ export class Caixas
 {
     constructor
     (
-        // public id: number,
+        public id: number,
         public nome: string,
         public codigo: string,
         public usuarios = {},

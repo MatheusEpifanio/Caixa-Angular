@@ -1,4 +1,4 @@
-<div class="modal-area" *ngIf="statusmodal">
+<div class="modal-area" *ngIf="statusmodal" ModalEsc>
     <form  [formGroup]="formulario"(ngSubmit)="onSubmit()">
         <div id="content-forms">
             <div>
@@ -41,7 +41,8 @@
         </div>
         <div id="footer-forms">
             <button type="submit" class="btn-salvar">Gravar</button>
-            <button type="button" class="btn-cancelar" (click)="modal()">Fechar</button>
+            <button type="button" class="btn-cancelar" (click)="modal()" >Fechar</button>
+            <button></button>
         </div>
     </form>
 </div>

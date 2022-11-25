@@ -2,7 +2,7 @@ ul, li
 {
     display: inline-flex;
 }
-li
+li  /*a/ alteração com rotas na aba */
 {
     border: solid 1px black;
     border-top-left-radius: 5px;
@@ -11,14 +11,17 @@ li
     color: white;
     cursor: default;
 }
-.active-aba
+.active-aba  /*a/ alteração com rotas na aba */
 {
     background-color: RGB(240, 240, 240);
     border: solid 1px RGB(240, 240, 240);
-}
-.active-route a
-{
     color: black;
+    font-weight: 550;
+}
+.active-aba button
+{
+    color: black !important; 
+    font-weight: 600;
 }
 #area-menu-aba
 {
@@ -38,6 +41,7 @@ li
 {
     background: none;
     margin-left: 5px;
-    color: white;
-    
+    color: white;    
 }
+
+

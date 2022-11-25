@@ -1,5 +1,5 @@
-import { UpperCasePipe } from '@angular/common';
 import { EventEmitter, Injectable } from '@angular/core';
+import { ChildActivationStart } from '@angular/router';
 
 import { Caixas } from './Caixas';
 
@@ -45,7 +45,8 @@ export class CaixasService {
   caixas: Caixas[];
   statusmodal = new EventEmitter();
   alteraritem = new EventEmitter();
-
+  abatrocada = new EventEmitter();
+  statusalterar = false
   constructor() { }  
 
   getLocalCaixa()
@@ -59,82 +60,83 @@ export class CaixasService {
   }
 
   setCaixa(caixa:Caixas, users = [])
-  {      
+  {     
+    if(!this.statusalterar)
+    {      
+        if(this.caixas.length > 0)
+      {
+        let lastid = this.caixas.at(-1)
+        caixa.id = lastid.id     
+      }
+      caixa.id++ 
+    }  
     caixa.usuarios = users        
-    this.caixas.push(caixa);    
+    this.caixas.push(caixa);
     this.setLocalCaixa(this.caixas);
   }
   
-  // usuarios 
-  //buscarUsuario(id)
-  // {
-  //   for(let i = 0; i<=this.usuarios.length; i++)
-  //   {
-  //     if(id == i)
-  //     {
-  //       return this.usuarios[id].nome
-  //     }
-  //   }  
-  //   return null
-  // }
-
-  // setUsuarioCaixa(regusuario, id)
-  // {
-  //   this.caixas[id].usuarios = regusuario
-  //   this.setLocalCaixa(this.caixas)
-  // }
-
   atualizarCaixa()
   {  
     return this.caixas = this.getLocalCaixa();
   }
-  
-  somenteAtivo()
-  {
-    let ativos = []
-    this.caixas.forEach(caixas => 
-      {if(caixas.ativo == true)
-        {
-          ativos.push(caixas);
-        }
-      })
-      return ativos;
+
+  itemCaixa(id:number)
+  {  
+    for(let i = 0; i <= this.caixas.length ; i++)
+    {
+      if(id == this.caixas[i].id)
+      {        
+        return this.caixas[i];
+      }
+    }
+    return null;
   }
 
   buscarCaixa(id)
-  {
-    for(let i = 0; i < this.caixas.length ; i++)
-    {  
-      if(id == i)
-      {
-        return true;
+  {     
+    for(let i = 0; i <= this.caixas.length; i++)
+    {                      
+      if(id == this.caixas[i].id)
+      {        
+        return i
       }
     }
-    return false;
-  }
-
-  itemCaixa(id)
-  {
-    if(this.buscarCaixa(id))
-    {
-      return this.caixas[id];
-    }
+    return -1  
   }
 
   excluirCaixa(id:number)
   {    
-    if(this.buscarCaixa(id))
+    let index = this.buscarCaixa(id) 
+    // console.log(index);
+    if(index != -1)
     {
-      this.caixas.splice(id, 1); 
+      this.caixas.splice(index, 1); 
     }
     this.setLocalCaixa(this.caixas);
   }
 
   alterarCaixa(item, id:number, users = [])
-  {     
-    this.caixas[id] = item;    
-    this.caixas[id].usuarios =  users
+  {         
+    let index = this.buscarCaixa(id)
+    this.statusalterar = !this.statusalterar  
+    this.caixas[index] = item;    
+    this.caixas[index].id = id 
+    this.caixas[index].usuarios =  users
     this.setLocalCaixa(this.caixas);
+    this.statusalterar = !this.statusalterar 
+  }
+
+  somenteAtivo()
+  {
+    let ativos = []    
+    this.caixas.forEach(caixas => 
+      {
+        if(caixas.ativo == true)
+        {
+          ativos.push(caixas);
+        }
+      })
+      return ativos;
   }
 
   emitirAlterarCaixa(id)
@@ -146,5 +148,12 @@ export class CaixasService {
   {
     this.statusmodal.emit(status)
   }
-  
+
+  statusaba(aba)
+  {
+    this.abatrocada.emit(aba)
+  }
+
+
+
 }

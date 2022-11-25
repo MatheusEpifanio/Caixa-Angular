@@ -13,24 +13,24 @@ export class CaixasComponent implements OnInit {
 
   caixas:any[] = [];
   usuarioscaixa:any[] = [];
-  status:boolean = true
+  statusativos:boolean = false
 
   constructor(private caixasService:CaixasService
              ) { }
 
   ngOnInit(): void
   { 
-    this.caixas = this.caixasService.atualizarCaixa()     
-    // this.smtAtivos()
+    this.caixas = this.caixasService.atualizarCaixa()
   }
   
+
   excluirItem(id: number)
   {
     this.caixasService.excluirCaixa(id);
   }
 
   alterarItem(id)
-  { 
+  {     
     this.caixasService.emitirAlterarCaixa(id)
   }
 
@@ -46,22 +46,26 @@ export class CaixasComponent implements OnInit {
   exibir()
   {
     this.caixas = this.caixasService.atualizarCaixa()
+    if(this.statusativos)
+    {
+      this.smtAtivos()
+    }
   }
 
   smtAtivos(event = null)
-  {            
-    // if(event != null)
-    // {
-    //   this.status = !this.status 
-    // }
-    // if(this.status)
-    // {
-    //   this.caixas = this.caixasService.somenteAtivo()       
-    // }
-    // else
-    // {
-    //   this.caixas = this.caixasService.getLocalCaixa()
-    // }    
+  {                
+    if(event != null)
+    {
+      this.statusativos = !this.statusativos     
+    }
+    if(this.statusativos)
+    {
+      this.caixas = this.caixasService.somenteAtivo()     
+    }
+    else
+    {    
+      this.caixas = this.caixasService.getLocalCaixa()
+    }    
   }
 
 

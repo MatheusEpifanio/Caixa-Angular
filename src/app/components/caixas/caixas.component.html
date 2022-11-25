@@ -1,4 +1,4 @@
-<div id="caixas" *ngIf="!caixasForms.statusmodal">
+ <div id="caixas" *ngIf="!caixasForms.statusmodal">
     <div id="area-menu-functions">
         <div id="buttons-functions">
             <button (click)="caixasForms.modal()"><i class="fa-solid fa-circle-plus fa-lg fa-green"></i></button>
@@ -10,7 +10,7 @@
             <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <div id="smt-ativos">
-            <input type="checkbox" checked id="somente-ativo" #somenteativo (click)="smtAtivos($event)">
+            <input type="checkbox" id="somente-ativo" #somenteativo (click)="smtAtivos($event)">
             <label for="somente-ativo">Somente ativos</label> 
         </div>
     </div> 
@@ -27,17 +27,17 @@
                         <th scope="col">ID</th>
                     </tr>
                 </thead>
-                <tbody *ngFor="let itemsCaixas of caixas let i = index">
+                <tbody *ngFor="let itemsCaixas of caixas">
                     <tr>
-                        <td class="width-5"><button class="fa-solid fa-pen-to-square" (click)="alterarItem(i)" ></button></td>
-                        <td class="width-5"><button class="fa-solid fa-trash-can" (click)="excluirItem(i)"></button></td>
+                        <td class="width-5"><button class="fa-solid fa-pen-to-square" (click)="alterarItem(itemsCaixas.id)" ></button></td>
+                        <td class="width-5"><button class="fa-solid fa-trash-can" (click)="excluirItem(itemsCaixas.id)"></button></td>
                         <td class="width-10">{{ itemsCaixas.codigo |uppercase }} </td>
                         <td class="width-70">{{ itemsCaixas.nome |uppercase }}</td>
                         <td class="width-5"><button>
                         <i class="fa-solid"
                         [ngClass]="verificaStatusCss(itemsCaixas.ativo)">                    
                         </i></button></td>
-                        <td class="width-5">{{ i }}</td>
+                        <td class="width-5">{{ itemsCaixas.id }}</td>
                     </tr>            
                 </tbody>
             </table>
@@ -45,5 +45,3 @@
     </div>
 </div>
 <app-caixas-forms #caixasForms></app-caixas-forms>
-
-
