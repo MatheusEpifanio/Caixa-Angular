@@ -1,4 +1,4 @@
-<div class="modal-area" *ngIf="statusmodal" ModalEsc>
+<div class="modal-area" *ngIf="statusmodal">
     <form  [formGroup]="formulario"(ngSubmit)="onSubmit()">
         <div id="content-forms">
             <div>
@@ -47,20 +47,20 @@
     </form>
 </div>
 
-<!-- <br>
-<div>
+<br>
+<div style="position:relative; z-index: 10000000; top: 300px">
     <div>
         Detalhes do Form
     </div>
     <pre>
          Form Válido: {{ formulario.valid }}
     </pre>
-    <pre>
+    <!-- <pre>
         Form enviado: {{ formulario.submitted }}
-   </pre>
+   </pre> -->
    <pre>
         Valores: <br> {{ formulario.value | json }}
     </pre>
-</div> -->
+</div>
 
 

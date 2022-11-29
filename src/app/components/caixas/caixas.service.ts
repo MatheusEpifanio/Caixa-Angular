@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { ChildActivationStart } from '@angular/router';
+import { ChildActivationStart, Router } from '@angular/router';
 
 import { Caixas } from './Caixas';
 
@@ -47,7 +47,7 @@ export class CaixasService {
   alteraritem = new EventEmitter();
   abatrocada = new EventEmitter();
   statusalterar = false
-  constructor() { }  
+  constructor(private router:Router) { }  
 
   getLocalCaixa()
   {
@@ -88,8 +88,8 @@ export class CaixasService {
       {        
         return this.caixas[i];
       }
-    }
-    return null;
+    }  
+      return null;
   }
 
   buscarCaixa(id)
@@ -142,18 +142,20 @@ export class CaixasService {
   emitirAlterarCaixa(id)
   {    
    this.alteraritem.emit(id);
+   this.router.navigate(['/caixasforms']);
   }
 
   emitirStatusModal(status)
   {
     this.statusmodal.emit(status)
+    if(status)
+    {
+      this.router.navigate(['/caixasforms'])  
+    }
+    else
+    {
+      this.router.navigate(['/caixas'])  
+    }
   }
-
-  statusaba(aba)
-  {
-    this.abatrocada.emit(aba)
-  }
-
-
 
 }

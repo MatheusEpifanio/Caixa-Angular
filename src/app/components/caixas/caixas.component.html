@@ -1,7 +1,7 @@
- <div id="caixas" *ngIf="!caixasForms.statusmodal">
+ <div id="caixas" *ngIf="!statusmodal">
     <div id="area-menu-functions">
         <div id="buttons-functions">
-            <button (click)="caixasForms.modal()"><i class="fa-solid fa-circle-plus fa-lg fa-green"></i></button>
+            <button (click)="chamarModal()"><i class="fa-solid fa-circle-plus fa-lg fa-green"></i></button>
             <button (click)="exibir()"><i class="fa-solid fa-rotate fa-lg"></i></button>
             <button><i class="fa-solid fa-arrow-rotate-left fa-lg"></i></button>
         </div>
@@ -44,4 +44,5 @@
         </div>
     </div>
 </div>
-<app-caixas-forms #caixasForms></app-caixas-forms>
+<app-caixas-forms *ngIf="statusmodal"></app-caixas-forms>
+

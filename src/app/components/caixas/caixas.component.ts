@@ -1,6 +1,5 @@
-import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { CaixasFormsComponent } from './caixas-forms/caixas-forms.component';
+
+import { Component, OnInit } from '@angular/core';
 
 import { CaixasService } from './caixas.service';
 
@@ -14,15 +13,21 @@ export class CaixasComponent implements OnInit {
   caixas:any[] = [];
   usuarioscaixa:any[] = [];
   statusativos:boolean = false
-
+  statusmodal
+   
   constructor(private caixasService:CaixasService
-             ) { }
+            ) { }
 
   ngOnInit(): void
   { 
     this.caixas = this.caixasService.atualizarCaixa()
+    this.caixasService.statusmodal.subscribe(s => this.statusmodal = s)
   }
   
+  chamarModal()
+  {
+    this.caixasService.emitirStatusModal(true)
+  }
 
   excluirItem(id: number)
   {

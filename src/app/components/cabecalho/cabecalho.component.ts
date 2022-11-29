@@ -30,9 +30,5 @@ export class CabecalhoComponent implements OnInit {
   {
     this.caixasService.emitirStatusModal(false)   
   }
-  teste(aba)
-  {
-    this.caixasService.statusaba(aba)
-  }
 
 }

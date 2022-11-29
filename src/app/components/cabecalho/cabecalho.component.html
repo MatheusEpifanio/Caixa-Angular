@@ -1,21 +1,20 @@
-<div id="area-menu">
+<div>
     <nav id="area-menu-aba">
         <ul>
-            <!-- <li routerLinkActive="active-aba" (click)="teste('caixa')">
-                <a routerLink="/caixas" >Caixa</a> 
+            <li routerLinkActive="active-aba" >
+                <a routerLink="/caixas">Caixa</a> 
             </li>
-            <li routerLinkActive="active-aba" *ngIf="statusmodal" (click)="teste('novaAba')">
-                <a routerLink="/caixasforms">{{ nomecaixa }}<button class="fa-solid fa-x fa-xs"
-                (click)="modalFechar()"></button></a>
-            </li> -->
+            <li routerLinkActive="active-aba" *ngIf="statusmodal">
+                <a routerLink="/caixasforms">{{ nomecaixa }}</a><button class="fa-solid fa-x fa-xs"(click)="modalFechar()"></button>
+            </li>
 
-            <li [ngClass]="{'active-aba':!statusmodal}">
+            <!-- <li [ngClass]="{'active-aba':!statusmodal}">
                 Caixas
             </li>
             <li *ngIf="statusmodal" [ngClass]="{'active-aba':statusmodal}">
                 {{ nomecaixa }} <button class="fa-solid fa-x fa-xs"
                 (click)="modalFechar()"></button>
-            </li>
+            </li> -->
         </ul>
     </nav>
 </div>

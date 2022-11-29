@@ -1,28 +1,3 @@
-ul, li
-{
-    display: inline-flex;
-}
-li  /*a/ alteração com rotas na aba */
-{
-    border: solid 1px black;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    padding: 10px; 
-    color: white;
-    cursor: default;
-}
-.active-aba  /*a/ alteração com rotas na aba */
-{
-    background-color: RGB(240, 240, 240);
-    border: solid 1px RGB(240, 240, 240);
-    color: black;
-    font-weight: 550;
-}
-.active-aba button
-{
-    color: black !important; 
-    font-weight: 600;
-}
 #area-menu-aba
 {
     width: 100%;
@@ -43,5 +18,37 @@ li  /*a/ alteração com rotas na aba */
     margin-left: 5px;
     color: white;    
 }
+#area-menu-aba ul li a
+{
+    color: white;    
+}
+ul, li
+{
+    display: inline-flex;
+}
+li
+{
+    border: solid 1px black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 10px;
+
+}
+.active-aba 
+{
+    background-color: RGB(240, 240, 240);
+    border: solid 1px RGB(240, 240, 240);    
+}
+.active-aba button
+{
+    color: black !important; 
+    font-weight: 550;
+}
+.active-aba a
+{
+    color: black !important; 
+    font-weight: 550;
+}
+
 
 
